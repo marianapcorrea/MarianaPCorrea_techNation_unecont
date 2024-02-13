@@ -8,7 +8,7 @@ import Chart from 'chart.js/auto'
       label: 'Evolução da inadimplência',
       data: [65, 59, 80, 81, 56, 55, 40, 81, 56, 55, 40,50],
       fill: false,
-      borderColor: "#e80c6b",
+      borderColor: "#F3316F",
       tension: 0.1
     }]
   };
@@ -19,7 +19,7 @@ import Chart from 'chart.js/auto'
       label: 'Evolução da receita recebida',
       data: [165, 519, 480, 851, 506, 575, 490, 801, 556, 535, 490,500],
       fill: false,
-      borderColor: "#e80c6b",
+      borderColor: "#F3316F",
       tension: 0.1
     }]
   };

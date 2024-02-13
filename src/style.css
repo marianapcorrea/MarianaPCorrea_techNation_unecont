@@ -1,14 +1,113 @@
+/* Variáveis */
 body {
-  display: flex;
-flex-direction: row;
+  --main-color: #F3316F;
+  --white-color: #fefefe;
+  --ligh-gray-color: #F2F2F2;
+  --medium-gray-color: #b8b6b6;
+  --dark-gray-color: #2b2a2a;
 }
 
+/* CSS-Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
+}
+
+body {
+  display: flex;
+  flex-direction: row;
+  width: 100vw;
+}
+
+/* Header - Sidebar */
 #main-sidebar{
   display: flex;
   flex-direction: column;
+  background-color: var(--main-color);
+  width: 15%;
+  color: var(--white-color);
+  padding: 1rem 0 1rem 1rem;
+  z-index: 10;
+}
+
+#main-sidebar p {
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 1px;
 }
 
 #main-sidebar nav{
   display: flex;
   flex-direction: column;
+  font-size: 1.5rem;
+  margin-top: 3rem;
+}
+
+#main-sidebar nav a{
+  color: var(--white-color);
+  margin-bottom: 1rem;
+  padding: 1rem ;
+}
+
+#main-sidebar nav a:active, main-sidebar nav a:hover{
+  background-color: var(--white-color);
+  color: var(--main-color);
+  border-radius: 2rem 0  0 2rem ;
+}
+
+/* Main Content */
+main {
+  width: 85%;
+}
+/* MainContent - Header */
+#header-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--white-color);
+  padding: 1rem 2rem;
+  color: var(--dark-gray-color);
+}
+
+#search-bar {
+  border-radius: 20px;
+  border: 1px solid var(--medium-gray-color);
+  padding: 1rem;
+  text-align: center;
+}
+
+#user {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+#user img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 0.25rem;
+  background-color: var(--medium-gray-color);
+}
+
+#user-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+#user-permission {
+  font-size: 1.25rem;
+  font-weight: 400;
+  color: var(--medium-gray-color);
+}
+
+
+#data-container {
+  background-color: var(--medium-gray-color);
+  box-shadow: 0px -2px 3px 0px var(--medium-gray-color);
 }

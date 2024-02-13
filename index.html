@@ -16,12 +16,19 @@
       </header>
     </nav>
     <main id="app">
-      <header>
+      <header id="header-container">
         <h1>Dashboard</h1>
-      <div>USER</div>
+        <input type="text" id="search-bar" placeholder="Pesquisar">
+        <span id="user">
+          <img src="" alt="User Avatar"/>
+          <span>
+            <p id="user-name">John Doe</p>
+            <p id="user-permission">Super Admin</p>
+          </span>
+        </span>
       </header>
-      <section>
-        <form>
+      <section id="data-container">
+        <form id="tab-container">
           <input type="radio" name="dash-section" id="indicators" value="indicators" checked><label for="indicators">Indicadores</label>
           <input type="radio" name="dash-section" id="invoice" value="invoice"><label for="invoice">Notas Emitidas</label>
         </form>
@@ -47,7 +54,8 @@
                   </div>
                   <div id="value-overdue">
                     <h3>Valor total das notas vencidas - Inadimplência</h3>
-                    <div class="value">0</div>
+                    <div class="value">
+                    </div>
                   </div>
                 </section>
                 <section>
