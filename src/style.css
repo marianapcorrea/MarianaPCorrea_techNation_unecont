@@ -1,0 +1,14 @@
+body {
+  display: flex;
+flex-direction: row;
+}
+
+#main-sidebar{
+  display: flex;
+  flex-direction: column;
+}
+
+#main-sidebar nav{
+  display: flex;
+  flex-direction: column;
+}
