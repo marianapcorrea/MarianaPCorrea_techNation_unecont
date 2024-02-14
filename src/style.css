@@ -20,6 +20,8 @@ body {
   display: flex;
   flex-direction: row;
   width: 100vw;
+  height: 100%;
+  min-height: 100vh
 }
 
 /* Header - Sidebar */
@@ -61,6 +63,8 @@ body {
 /* Main Content */
 main {
   width: 85%;
+  background-color: var(--medium-gray-color);
+
 }
 /* MainContent - Header */
 #header-container {
@@ -78,6 +82,10 @@ main {
   border: 1px solid var(--medium-gray-color);
   padding: 1rem;
   text-align: center;
+}
+
+#search-bar:focus {
+  outline: 1px solid var(--main-color);
 }
 
 #user {
@@ -106,8 +114,127 @@ main {
   color: var(--medium-gray-color);
 }
 
-
-#data-container {
-  background-color: var(--medium-gray-color);
+#main-container {
   box-shadow: 0px -2px 3px 0px var(--medium-gray-color);
+  padding: 1rem;
+}
+
+#tabs-container {
+  margin-top: 1.5rem;
+  display: flex;
+}
+
+input.tab {
+  display: none;
+}
+
+input.tab + label   {
+  padding: 1rem 1rem 2rem ;
+  border-radius: 20px;
+  background-color: var(--ligh-gray-color);
+  box-shadow: 1px -2px 3px -10px var(--medium-gray-color);
+  opacity: 0.7;
+  text-transform: uppercase;
+  font-size: 1rem;
+  font-style: italic;
+}
+
+input.tab:checked + label{
+  opacity: 1;
+}
+
+/* Data-Container */
+#data-container {
+  background-color: var(--ligh-gray-color);
+  padding: 1.5rem 2.5rem;
+  z-index: 10;
+  position: relative;
+  top: -1.5rem;
+  border-radius: 5px;
+}
+
+.tab-content h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 2rem 0;
+  color:var(--main-color)
+}
+
+/* Data-Container - Indicators Section */
+/* #indicators-section {
+  display: none;
+} */
+
+#indicators-data {
+  display: grid;
+  grid-template-columns:  1fr 2fr;
+}
+
+.indicator-value {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem;
+  padding: 1rem;
+  border: 1px solid var(--main-color);
+  border-radius: 15px;
+  background-color: var(--white-color);
+  font-size: 1rem;
+  color: #2b2a2a;
+}
+
+.indicator-value .value {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 1rem;
+  font-size: 2rem;
+}
+
+.indicator-value .value span {
+  font-size: 4rem;
+  font-weight: 700;
+  color: black;
+  padding-left: 0.5rem;
+}
+
+#indicators-data section {
+  display:grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+#chart {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Data-Container - invoice Data */
+.invoice-item-data {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: 1px solid var(--main-color);
+  border-radius: 15px;
+  background-color: var(--white-color);
+  padding: 1rem;
+  gap: 0.75rem;
+  margin: 1rem 0;
+}
+.invoice-item-data div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.invoice-item-data .title{
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--dark-gray-color);
+}
+
+.invoice-item-data .data {
+  font-size: 1.5rem;
+  color: black;
+  padding-right: 0.5rem;
 }

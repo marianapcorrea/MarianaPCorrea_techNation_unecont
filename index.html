@@ -11,8 +11,8 @@
     <header id='main-sidebar'>
       <p> Accusoft</p>
       <nav>
-        <a href="/dashboard" data-link>Dashboard</a>
-        <a href="/" data-link>Customers</a>
+        <a href="/dashboard" >Dashboard</a>
+        <a href="/" >Customers</a>
       </header>
     </nav>
     <main id="app">
@@ -27,87 +27,160 @@
           </span>
         </span>
       </header>
-      <section id="data-container">
-        <form id="tab-container">
-          <input type="radio" name="dash-section" id="indicators" value="indicators" checked><label for="indicators">Indicadores</label>
-          <input type="radio" name="dash-section" id="invoice" value="invoice"><label for="invoice">Notas Emitidas</label>
+
+      <section id="main-container">
+        <form id="tabs-container">
+          <input  class="tab" type="radio" name="dash-section" id="indicators" value="indicators" checked>
+          <label for="indicators">Indicadores</label>
+          
+
+          <input  class="tab" type="radio" name="dash-section" id="invoice" value="invoice">
+          <label for="invoice">Notas Emitidas</label>
+
         </form>
-        <section id="indicators-section">
-          <h2>Indicadores</h2>
-          <section id="values">
-            <form>
-              <label>Filtrar por:</label>
-              <input type="radio" name="indicator" id="month" value="month" checked><label for="month">Mês</label>
-              <input type="radio" name="indicator" id="trimester" value="trimester"><label for="trimester">Trimestre</label>
-              <input type="radio" name="indicator" id="year" value="year" checked><label for="year">Ano</label>
-            </form>
-            <section id="'indicators-data">
-              <div id="full-value">
-                <h3>Total - notas emitidas</h3>
-                <div id="value">0</div>
-              </div>
-              <section>
+
+        <section id="data-container">
+          <section class="tab-content" id="indicators-section">
+            <h2>Indicadores</h2>
+            <section id="values">
+              <form>
+                <label>Filtrar por:</label>
+                <input type="radio" name="indicator" id="month" value="month" checked><label for="month">Mês</label>
+                <input type="radio" name="indicator" id="trimester" value="trimester"><label for="trimester">Trimestre</label>
+                <input type="radio" name="indicator" id="year" value="year" checked><label for="year">Ano</label>
+              </form>
+              <section id="indicators-data">
+                <div class="indicator-value" id="full-value">
+                  <h3>Valor Total - Notas Emitidas</h3>
+                  <div  class="value">R$<span>0</span></div>
+                </div>
                 <section>
-                  <div id="value-no-charge">
-                    <h3>Valor total das notas emitidas, mas sem ter a cobrança feita</h3>
-                    <div class="value">0</div>
-                  </div>
-                  <div id="value-overdue">
-                    <h3>Valor total das notas vencidas - Inadimplência</h3>
-                    <div class="value">
+                    <div class="indicator-value" id="value-no-charge">
+                      <h3>Total de notas emitidas - Sem cobrança</h3>
+                      <div  class="value">R$<span>0</span></div>
                     </div>
-                  </div>
-                </section>
-                <section>
-                  <div id="value-future-due">
-                    <h3>Valor total das notas a vencer</h3>
-                    <div class="value">0</div>
-                  </div>
-                  <div id="full-payed">
-                    <h3>Valor total das notas pagas</h3>
-                    <div class="value">0</div>
-                  </div>
+                    <div class="indicator-value" id="value-overdue">
+                      <h3>Total de notas vencidas - Inadimplência</h3>
+                      <div  class="value">R$<span>0</span></div>
+                      </div>
+                    </div>
+                    <div class="indicator-value" id="value-future-due">
+                      <h3>Total de notas a vencer</h3>
+                      <div  class="value">R$<span>0</span></div>
+                    </div>
+                    <div class="indicator-value" id="full-payed">
+                      <h3>Valor Total - Notas Pagas</h3>
+                      <div  class="value">R$<span>0</span></div>
+                    </div>
+                  </section>
                 </section>
               </section>
+      
+
+        
+            <section id="chart">
+              <canvas id="chart_nonPayment"></canvas>
+              <canvas id="chart_incomeEvolution"></canvas>
             </section>
           </section>
-      
-          <section id="chart">
-            <canvas id="chart_nonPayment"></canvas>
-            <canvas id="chart_incomeEvolution"></canvas>
+        
+        
+          <section  class="tab-content" id="invoice">
+            <h2>Notas Fiscais Emitidas</h2>
+
+            <form>
+              <label>Filtrar por:</label>
+              <input type="radio" name="invoice" id="emission-month" value="emission-month" checked><label for="emission-month">Mês de emissão</label>
+              <input type="radio" name="invoice" id="charge-month" value="charge-month"><label for="charge-month">Mês de cobrança</label>
+              <input type="radio" name="invoice" id="payment-month" value="payment-month" checked><label for="payment-month">Mês de pagamento</label>
+              <input type="radio" name="invoice" id="status" value="status" checked><label for="status">Status da nota</label>
+            </form>
+<!-- nota 1 -->
+            <section class="invoice-item-data">
+              <div >
+                <span>
+                  <span class="title">Nome do Pagador: </span>
+                  <span class="data">Jane Doe</span>
+                </span>
+                <span>
+                  <span class="title">Número de identificação da nota: </span>
+                  <span class="data">1236456</span>
+                </span>
+              </div>
+              <div>
+                <span>
+                  <span class="title">Data de emissão: </span>
+                  <span class="data">01/01/0001</span>
+                </span>
+                <span>
+                  <span class="title">Data da cobrança: </span>
+                  <span class="data">01/01/0001</span>
+                </span>
+                <span>
+                  <span class="title">Data do pagamento: </span>
+                  <span class="data">J01/01/0001</span>
+                </span>
+              </div>
+              <div>
+              <span>
+                <span class="title">Valor da nota: R$</span>
+                <span class="data">1000,00</span>
+              </span>
+              <span>
+                <span class="title">Documento do boleto bancário: </span>
+                <span class="data">789456123</span>
+              </span>
+              <span>
+                <span class="title">Status da nota: </span><span class="data">Emitida</span>
+              </span>
+              </div>
+            </section>
+<!-- nota 2 -->
+            <section class="invoice-item-data">
+              <div >
+                <span>
+                  <span class="title">Nome do Pagador: </span>
+                  <span class="data">Jane Doe</span>
+                </span>
+                <span>
+                  <span class="title">Número de identificação da nota: </span>
+                  <span class="data">1236456</span>
+                </span>
+              </div>
+              <div>
+                <span>
+                  <span class="title">Data de emissão: </span>
+                  <span class="data">01/01/0001</span>
+                </span>
+                <span>
+                  <span class="title">Data da cobrança: </span>
+                  <span class="data">01/01/0001</span>
+                </span>
+                <span>
+                  <span class="title">Data do pagamento: </span>
+                  <span class="data">J01/01/0001</span>
+                </span>
+              </div>
+              <div>
+              <span>
+                <span class="title">Valor da nota: R$</span>
+                <span class="data">1000,00</span>
+              </span>
+              <span>
+                <span class="title">Documento do boleto bancário: </span>
+                <span class="data">789456123</span>
+              </span>
+              <span>
+                <span class="title">Status da nota: </span><span class="data">Emitida</span>
+              </span>
+              </div>
+            </section>
           </section>
-      
-        </section>
-      
-        <section id="invoice">
-          <h2>Notas Fiscais Emitidas</h2>
-          <form>
-            <label>Filtrar por:</label>
-            <input type="radio" name="invoice" id="emission-month" value="emission-month" checked><label for="emission-month">Mês de emissão</label>
-            <input type="radio" name="invoice" id="charge-month" value="charge-month"><label for="charge-month">Mês de cobrança</label>
-            <input type="radio" name="invoice" id="payment-month" value="payment-month" checked><label for="payment-month">Mês de pagamento</label>
-            <input type="radio" name="invoice" id="status" value="status" checked><label for="status">Status da nota</label>
-          </form>
-          <section>
-            <div>
-            <div><span class="title">Nome do Pagador: </span><span class="data">Jane Doe</span></div>
-            <div><span class="title">Número de identificação da nota: </span><span class="data">1236456</span></div>
-          </div>
-          <div>
-            <div><span class="title">Data de emissão da nota: </span><span class="data">01/01/0001</span></div>
-            <div><span class="title">Data da cobrança: </span><span class="data">01/01/0001</span></div>
-            <div><span class="title">Data do pagamento: </span><span class="data">J01/01/0001</span></div>
-          </div>
-        <div>
-            <div><span class="title">Valor da nota: R$</span><span class="data">1000,00</span></div>
-            <div><span class="title">Documento do boleto bancário: </span><span class="data">789456123</span></div>
-            <div><span class="title">Status da nota: </span><span class="data">Emitida</span></div>
-          </div>
-          </section>
+
         </section>
       </section>
     </main>
-    <script type="module" src="/main.js"></script>
+    <script type="module" src="/src/main.js"></script>
     <script type="module" src="/src/data/charts.js"></script>
   </body>
 </html>
