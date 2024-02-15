@@ -48,13 +48,13 @@ body {
   margin-top: 3rem;
 }
 
-#main-sidebar nav a{
+.navOption{
   color: var(--white-color);
   margin-bottom: 1rem;
   padding: 1rem ;
 }
 
-#main-sidebar nav a:active, main-sidebar nav a:hover{
+.navOptionActive {
   background-color: var(--white-color);
   color: var(--main-color);
   border-radius: 2rem 0  0 2rem ;
@@ -175,9 +175,11 @@ input.tab:checked + label{
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  text-align: center;
   margin: 1rem;
   padding: 1rem;
-  border: 1px solid var(--main-color);
+  /* border: 1px solid var(--main-color); */
+  box-shadow: 5px 5px 10px -5px var(--main-color);
   border-radius: 15px;
   background-color: var(--white-color);
   font-size: 1rem;
@@ -188,8 +190,7 @@ input.tab:checked + label{
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin-top: 1rem;
-  font-size: 2rem;
+  font-size: 1rem;
 }
 
 .indicator-value .value span {
@@ -210,11 +211,17 @@ input.tab:checked + label{
 }
 
 /* Data-Container - invoice Data */
+#invoice-section {
+  display: none;
+}
+
 .invoice-item-data {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border: 1px solid var(--main-color);
+  /* border: 1px solid var(--main-color); */
+  box-shadow: 5px 5px 10px -5px var(--main-color);
+
   border-radius: 15px;
   background-color: var(--white-color);
   padding: 1rem;
