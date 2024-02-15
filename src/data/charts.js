@@ -1,12 +1,13 @@
 import Chart from 'chart.js/auto'
+import { INADIMPLENCE_EVOLUTION, INCOME_EVOLUTION, MONTHS } from './utils';
 
 (async function() {
-  const labels = ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez"]
+  
   const chart_nonPayment = {
-    labels: labels,
+    labels: MONTHS,
     datasets: [{
       label: 'Evolução da inadimplência',
-      data: [65, 59, 80, 81, 56, 55, 40, 81, 56, 55, 40,50],
+      data:INADIMPLENCE_EVOLUTION,
       fill: false,
       borderColor: "#F3316F",
       tension: 0.1
@@ -14,10 +15,10 @@ import Chart from 'chart.js/auto'
   };
 
   const chart_incomeEvolution = {
-    labels: labels,
+    labels: MONTHS,
     datasets: [{
       label: 'Evolução da receita recebida',
-      data: [165, 519, 480, 851, 506, 575, 490, 801, 556, 535, 490,500],
+      data: INCOME_EVOLUTION,
       fill: false,
       borderColor: "#F3316F",
       tension: 0.1

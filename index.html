@@ -40,14 +40,15 @@
         </form>
 
         <section id="data-container">
+          <!-- Área de Indicadores -->
           <section class="tab-content" id="indicators-section">
             <h2>Indicadores</h2>
             <section id="values">
               <form>
                 <label>Filtrar por:</label>
-                <input type="radio" name="indicator" id="month" value="month" checked><label for="month">Mês</label>
-                <input type="radio" name="indicator" id="trimester" value="trimester"><label for="trimester">Trimestre</label>
-                <input type="radio" name="indicator" id="year" value="year" checked><label for="year">Ano</label>
+                <!-- Options geradas dinamicamente -->
+                <select id="filter-indicators-by"></select>
+              <select id="indicators-filter"></select>
               </form>
               <section id="indicators-data">
                 <div class="indicator-value" id="full-value">
@@ -84,16 +85,15 @@
             </section>
           </section>
         
-        
+        <!-- Área de Notas Fiscais -->
           <section  class="tab-content" id="invoice-section">
             <h2>Notas Fiscais Emitidas</h2>
 
             <form>
               <label>Filtrar por:</label>
-              <input type="radio" name="invoice" id="emission-month" value="emission-month" checked><label for="emission-month">Mês de emissão</label>
-              <input type="radio" name="invoice" id="charge-month" value="charge-month"><label for="charge-month">Mês de cobrança</label>
-              <input type="radio" name="invoice" id="payment-month" value="payment-month" checked><label for="payment-month">Mês de pagamento</label>
-              <input type="radio" name="invoice" id="status" value="status" checked><label for="status">Status da nota</label>
+              <!-- Options geradas dinamicamente -->
+              <select id="filter-invoice-by"></select>
+              <select id="invoice-filter"></select>
             </form>
 <!-- nota 1 -->
             <section class="invoice-item-data">
