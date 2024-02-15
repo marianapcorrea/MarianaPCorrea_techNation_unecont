@@ -29,27 +29,35 @@
       </header>
 
       <section id="main-container">
+        <!-- Form com opções de abas -->
         <form id="tabs-container">
           <input  class="tab" type="radio" name="dash-section" id="indicators" value="indicators" checked>
           <label for="indicators">Indicadores</label>
           
-
           <input  class="tab" type="radio" name="dash-section" id="invoice" value="invoice">
           <label for="invoice">Notas Emitidas</label>
-
         </form>
 
+        <!-- Área de exibição dos dados das abas-->
         <section id="data-container">
           <!-- Área de Indicadores -->
+          <form>
+            <label>Ano de Vigência:</label>
+            <select id="vigency-year"></select>
+          </form>
           <section class="tab-content" id="indicators-section">
             <h2>Indicadores</h2>
             <section id="values">
+              <!-- Filtros dos Indicadores -->
               <form>
+            
                 <label>Filtrar por:</label>
                 <!-- Options geradas dinamicamente -->
                 <select id="filter-indicators-by"></select>
               <select id="indicators-filter"></select>
               </form>
+
+              <!-- Subsessão de cards -->
               <section id="indicators-data">
                 <div class="indicator-value" id="full-value">
                   <div  class="value">R$<span>0</span></div>
@@ -77,8 +85,7 @@
                 </section>
               </section>
       
-
-        
+              <!-- Subsessão de gráficos -->
             <section id="chart">
               <canvas id="chart_nonPayment"></canvas>
               <canvas id="chart_incomeEvolution"></canvas>
@@ -89,13 +96,16 @@
           <section  class="tab-content" id="invoice-section">
             <h2>Notas Fiscais Emitidas</h2>
 
+              <!-- Filtros das Notas -->
             <form>
+            
+              <select id="filter-invoice-by"></select>
+
               <label>Filtrar por:</label>
               <!-- Options geradas dinamicamente -->
-              <select id="filter-invoice-by"></select>
               <select id="invoice-filter"></select>
             </form>
-<!-- nota 1 -->
+            <!-- nota 1 -->
             <section class="invoice-item-data">
               <div >
                 <span>
@@ -135,7 +145,7 @@
               </span>
               </div>
             </section>
-<!-- nota 2 -->
+            <!-- nota 2 -->
             <section class="invoice-item-data">
               <div >
                 <span>
@@ -180,6 +190,7 @@
         </section>
       </section>
     </main>
+    
     <script type="module" src="/src/main.js"></script>
     <script type="module" src="/src/data/charts.js"></script>
   </body>

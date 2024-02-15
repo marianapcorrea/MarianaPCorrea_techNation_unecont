@@ -1,8 +1,9 @@
-import { INDICATORS_FILTERS, INVOICES_FILTERS, MONTHS, TRIMESTERS, YEARS } from "./data/utils";
+import { INDICATORS_FILTERS, INVOICES_FILTERS, INVOICE_STATUS, MONTHS, TRIMESTERS, YEARS } from "./data/utils";
 
 const navOption = document.querySelectorAll('.navOption')
 const tabs = document.querySelectorAll('.tab')
 const filterInput = document.querySelector('#indicators-filter')
+const vigencyYear = document.querySelector('#vigency-year')
 const filterIndicatorBy = document.querySelector('#filter-indicators-by')
 const invoiceFilterInput = document.querySelector('#invoice-filter')
 const filterInvoiceBy = document.querySelector('#filter-invoice-by')
@@ -38,6 +39,15 @@ const createOptionElemente = (value, className) => {
 return optionEL
 }
 
+const handleInitialFiltersPopulation = () => {
+  const selectElArray = document.querySelectorAll('select')
+  selectElArray.forEach(({id}) => handleFiltersOptions(id))
+  filterInput.appendChild(createOptionElemente('--','filter-option'))
+
+  invoiceFilterInput.appendChild(createOptionElemente('--','filter-option'))
+}
+
+// Função para adicionar as opções de filtro de acordo com o id do elemento
 const handleFiltersOptions = (sectionID)=> {
   switch (sectionID) {
     case "filter-indicators-by":
@@ -48,35 +58,63 @@ const handleFiltersOptions = (sectionID)=> {
       INVOICES_FILTERS.forEach((filter) => {
         filterInvoiceBy.appendChild(createOptionElemente(filter, 'filter-category'))})
       break;
+
+    case "vigency-year":
+      YEARS.forEach((year) => {
+        vigencyYear.appendChild(createOptionElemente(year, 'filter-option'))
+      })
+      break;
   }
 }
-// Função para adicionar as opções de filtro de acordo com o indicador selecionado
+
+// Função para adicionar as opções de filtro de acordo com o período selecionado - Indicadores
 const handleFiltersIndicators = ({target}) => {
   // Remove as opções anteriores
   const options = document.querySelectorAll('#indicators-filter .filter-option')
   options.forEach((option) => option.remove())
 
   switch (target.value) {
-    case "month": 
+    case "Tudo": 
+    filterInput.appendChild(createOptionElemente("--",'filter-option'))
+    break;
+    case "Mês": 
     MONTHS.forEach((month) => {
       filterInput.appendChild(createOptionElemente(month, 'filter-option'))
     })
-    break;
-    case "trimester": 
+    case "Trimestre": 
     TRIMESTERS.forEach((trimester) => {
       filterInput.appendChild(createOptionElemente(trimester,'filter-option'))
     })
     break;
 
-    case "year": 
-    YEARS.forEach((year) => {
-      filterInput.appendChild(createOptionElemente(year,'filter-option'))
+  }
+}
+
+// Função para adicionar as opções de filtro de acordo com o período selecionado - Notas Fiscais
+const handleFiltersInvoice = ({target}) => {
+  console.log('target', target.value)
+  // Remove as opções anteriores
+  const options = document.querySelectorAll('#invoice-filter .filter-option')
+  options.forEach((option) => option.remove())
+
+  switch (target.value) {
+    case "Mês de emissão":
+      case "Mês de cobrança":
+      case "Mês de pagamento": 
+    console.log('mes de emissao')
+    MONTHS.forEach((month) => {
+      invoiceFilterInput.appendChild(createOptionElemente(month,'filter-option'))
     })
     break;
 
+    case "Status da nota": 
+    INVOICE_STATUS.forEach((status) => {
+      invoiceFilterInput.appendChild(createOptionElemente(status,'filter-option'))
+    })
+    break;
   }
-
 }
+
 
 
 
@@ -89,15 +127,13 @@ window.onload = ()=> {
   tabs.forEach((tab) => tab.addEventListener('click', (event)=> handleTabChoice(event)))
 
   //Popula os filtros de acordo com as opções disponíveis
-  handleFiltersOptions('filter-indicators-by')
-  handleFiltersOptions('filter-invoice-by')
+  handleInitialFiltersPopulation()
 
-  YEARS.forEach((year) => filterInput.appendChild(createOptionElemente(year)))
-
-    invoiceFilterInput.appendChild(createOptionElemente('--'))
-  
   // Adiciona event listener para o filtro de indicadores
   filterIndicatorBy.addEventListener('change', (event)=> handleFiltersIndicators(event))
+
+  filterInvoiceBy.addEventListener('change', (event)=> 
+  handleFiltersInvoice(event))
   }
 
   /* 
@@ -116,9 +152,13 @@ window.onload = ()=> {
       - Criar notas fiscais falsas para renderizar;
 
     Geral:
-      - Estilização mobile;
-      - Criar documentação para o projeto, explicando a estrutura, funções e decisões tomadas;
+      - Estilização de filtros
+      - Criar documentação para o projeto, explicando a estrutura, funcionalidades e decisões tomadas;
       - Modificar package.json para adicionar informações sobre o projeto e pessoa desenvolvedora;
       - Criar repo public no github;
+      - head: trocar icone e titulo;
+      - Estilização mobile;
+      - Adicionar icones;
+      - Adicionar transições;
       
   */

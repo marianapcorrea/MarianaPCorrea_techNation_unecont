@@ -1,4 +1,4 @@
-export const INDICATORS_FILTERS = ['Ano', 'Trimestre', 'Mês'];
+export const INDICATORS_FILTERS = ['Tudo', 'Trimestre', 'Mês'];
 
 export const INVOICES_FILTERS = ['Todas', 'Mês de emissão', 'Mês de cobrança', 'Mês de pagamento', 'Status da nota'];
 
