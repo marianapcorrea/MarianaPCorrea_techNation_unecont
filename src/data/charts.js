@@ -1,5 +1,5 @@
 import Chart from 'chart.js/auto'
-import { INADIMPLENCE_EVOLUTION, INCOME_EVOLUTION, MONTHS } from './utils';
+import { INADIMPLENCE_EVOLUTION, INCOME_EVOLUTION, MONTHS } from './auxiliarData';
 
 (async function() {
   

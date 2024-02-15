@@ -1,0 +1,169 @@
+{
+  "invoices": [
+    {
+      "vigencyYear": "2023",
+      "payerName": "João da Silva",
+      "invoiceId": "NF2023001",
+      "emissionDate": "05/02/2023",
+      "dueDate": "10/02/2023",
+      "paymentDate": "20/02/2023",
+      "invoiceValue": 150.25,
+      "bankDocument": "BB2023001",
+      "invoiceStatus": "Pagamento realizado"
+    },
+    {
+      "vigencyYear": "2023",
+      "payerName": "Maria Oliveira",
+      "invoiceId": "NF2023002",
+      "emissionDate": "10/02/2023",
+      "dueDate": "15/02/2023",
+      "paymentDate": "25/02/2023",
+      "invoiceValue": 200.50,
+      "bankDocument": "BB2023002",
+      "invoiceStatus": "Pagamento realizado"
+    },
+    {
+      "vigencyYear": "2023",
+      "payerName": "José Santos",
+      "invoiceId": "NF2023003",
+      "emissionDate": "15/02/2023",
+      "dueDate": "20/02/2023",
+      "paymentDate": "28/02/2023",
+      "invoiceValue": 180.75,
+      "bankDocument": "BB2023003",
+      "invoiceStatus": "Pagamento realizado"
+    },
+    {
+      "vigencyYear": "2023",
+      "payerName": "Ana Pereira",
+      "invoiceId": "NF2023004",
+      "emissionDate": "20/02/2023",
+      "dueDate": "25/02/2023",
+      "paymentDate": "03/03/2023",
+      "invoiceValue": 220.30,
+      "bankDocument": "BB2023004",
+      "invoiceStatus": "Pagamento realizado"
+    },
+    {
+      "vigencyYear": "2023",
+      "payerName": "Carlos Lima",
+      "invoiceId": "NF2023005",
+      "emissionDate": "25/02/2023",
+      "dueDate": "02/03/2023",
+      "paymentDate": "10/03/2023",
+      "invoiceValue": 190.20,
+      "bankDocument": "BB2023005",
+      "invoiceStatus": "Pagamento realizado"
+    },
+    {
+      "vigencyYear": "2023",
+      "payerName": "Fernanda Almeida",
+      "invoiceId": "NF2023006",
+      "emissionDate": "01/03/2023",
+      "dueDate": "06/03/2023",
+      "paymentDate": "15/03/2023",
+      "invoiceValue": 250.80,
+      "bankDocument": "BB2023006",
+      "invoiceStatus": "Pagamento realizado"
+    },
+    {
+      "vigencyYear": "2023",
+      "payerName": "Rafaela Costa",
+      "invoiceId": "NF2023007",
+      "emissionDate": "06/03/2023",
+      "dueDate": "11/03/2023",
+      "paymentDate": "",
+      "invoiceValue": 300.00,
+      "bankDocument": "BB2023007",
+      "invoiceStatus": "Cobrança realizada"
+    },
+    {
+      "vigencyYear": "2023",
+      "payerName": "Pedro Oliveira",
+      "invoiceId": "NF2023008",
+      "emissionDate": "11/03/2023",
+      "dueDate": "16/03/2023",
+      "paymentDate": "",
+      "invoiceValue": 280.45,
+      "bankDocument": "BB2023008",
+      "invoiceStatus": "Cobrança realizada"
+    },
+    {
+      "vigencyYear": "2023",
+      "payerName": "Aline Rodrigues",
+      "invoiceId": "NF2023009",
+      "emissionDate": "16/03/2023",
+      "dueDate": "21/03/2023",
+      "paymentDate": "",
+      "invoiceValue": 210.60,
+      "bankDocument": "BB2023009",
+      "invoiceStatus": "Cobrança realizada"
+    },
+    {
+      "vigencyYear": "2023",
+      "payerName": "Lucas Souza",
+      "invoiceId": "NF2023010",
+      "emissionDate": "21/03/2023",
+      "dueDate": "26/03/2023",
+      "paymentDate": "",
+      "invoiceValue": 230.75,
+      "bankDocument": "BB2023010",
+      "invoiceStatus": "Cobrança realizada"
+    },
+    {
+      "vigencyYear": "2023",
+      "payerName": "Mariana Fernandes",
+      "invoiceId": "NF2023011",
+      "emissionDate": "26/03/2023",
+      "dueDate": "31/03/2023",
+      "paymentDate": "",
+      "invoiceValue": 260.90,
+      "bankDocument": "BB2023011",
+      "invoiceStatus": "Cobrança realizada"
+    },
+    {
+      "vigencyYear": "2023",
+      "payerName": "Gustavo Silva",
+      "invoiceId": "NF2023012",
+      "emissionDate": "31/03/2023",
+      "dueDate": "05/04/2023",
+      "paymentDate": "",
+      "invoiceValue": 240.30,
+      "bankDocument": "BB2023012",
+      "invoiceStatus": "Cobrança realizada"
+    },
+    {
+      "vigencyYear": "2023",
+      "payerName": "Patrícia Lima",
+      "invoiceId": "NF2023013",
+      "emissionDate": "05/04/2023",
+      "dueDate": "10/04/2023",
+      "paymentDate": "",
+      "invoiceValue": 290.60,
+      "bankDocument": "BB2023013",
+      "invoiceStatus": "Cobrança realizada"
+    },
+    {
+      "vigencyYear": "2023",
+      "payerName": "Anderson Santos",
+      "invoiceId": "NF2023014",
+      "emissionDate": "10/04/2023",
+      "dueDate": "15/04/2023",
+      "paymentDate": "",
+      "invoiceValue": 270.80,
+      "bankDocument": "BB2023014",
+      "invoiceStatus": "Cobrança realizada"
+    },
+    {
+      "vigencyYear": "2023",
+      "payerName": "Camila Oliveira",
+      "invoiceId": "NF2023015",
+      "emissionDate": "15/04/2023",
+      "dueDate": "20/04/2023",
+      "paymentDate": "",
+      "invoiceValue": 310.40,
+      "bankDocument": "BB2023015",
+      "invoiceStatus": "Cobrança realizada"
+    }
+  ]
+}

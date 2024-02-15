@@ -1,4 +1,5 @@
-import { INDICATORS_FILTERS, INVOICES_FILTERS, INVOICE_STATUS, MONTHS, TRIMESTERS, YEARS } from "./data/utils";
+import { INDICATORS_FILTERS, INVOICES_FILTERS, INVOICE_STATUS, MONTHS, TRIMESTERS, YEARS } from "./data/auxiliarData";
+import { getData } from "./data/fetchJson";
 
 const navOption = document.querySelectorAll('.navOption')
 const tabs = document.querySelectorAll('.tab')
@@ -7,6 +8,7 @@ const vigencyYear = document.querySelector('#vigency-year')
 const filterIndicatorBy = document.querySelector('#filter-indicators-by')
 const invoiceFilterInput = document.querySelector('#invoice-filter')
 const filterInvoiceBy = document.querySelector('#filter-invoice-by')
+const invoiceDataContainer =document.querySelector("#invoice-data")
 
 
 // Função para adicionar a classe navOptionActive ao clicar em uma opção do menu lateral
@@ -92,7 +94,6 @@ const handleFiltersIndicators = ({target}) => {
 
 // Função para adicionar as opções de filtro de acordo com o período selecionado - Notas Fiscais
 const handleFiltersInvoice = ({target}) => {
-  console.log('target', target.value)
   // Remove as opções anteriores
   const options = document.querySelectorAll('#invoice-filter .filter-option')
   options.forEach((option) => option.remove())
@@ -101,7 +102,6 @@ const handleFiltersInvoice = ({target}) => {
     case "Mês de emissão":
       case "Mês de cobrança":
       case "Mês de pagamento": 
-    console.log('mes de emissao')
     MONTHS.forEach((month) => {
       invoiceFilterInput.appendChild(createOptionElemente(month,'filter-option'))
     })
@@ -115,11 +115,50 @@ const handleFiltersInvoice = ({target}) => {
   }
 }
 
+// Função de geração dinâmica de elementos li para dados de notas fiscais
+const createInvoiceItem = ({payerName, invoiceId, emissionDate, dueDate, paymentDate, invoiceValue, bankDocument, invoiceStatus}) => {
+  const itemLi = document.createElement('li');
+  itemLi.classList.add('invoice-item-data');
+
+  const div1 = createDiv('Nome do Pagador: ', payerName, 'Número de identificação da nota: ', invoiceId);
+  itemLi.appendChild(div1);
+
+  const div2 = createDiv('Data de emissão', emissionDate, 'Data da cobrança: ', dueDate, 'Data do pagamento: ', paymentDate);
+  itemLi.appendChild(div2);
+
+  const div3 = createDiv('Valor da nota: R$ ', (invoiceValue.toFixed(2)), 'Documento do boleto bancário: ', bankDocument, 'Status da nota: ', invoiceStatus);
+  itemLi.appendChild(div3);
+
+  return itemLi;
+};
+
+const createDiv = (...args) => {
+  const div = document.createElement('div');
+
+  for (let i = 0; i < args.length; i += 2) {
+    const span1 = document.createElement('span');
+    span1.classList.add('title');
+    span1.textContent = args[i];
+    const span2 = document.createElement('span');
+    span2.classList.add('data');
+    span2.textContent = args[i + 1];
+    
+    const spanContainer = document.createElement('span');
+    spanContainer.appendChild(span1);
+    spanContainer.appendChild(span2);
+
+    div.appendChild(spanContainer);
+  }
+
+  return div;
+};
 
 
 
+window.onload = async()=> {
+  //fetch de dados de notas fiscais (json)
+  const {invoices} = await getData()
 
-window.onload = ()=> {
   // Adiciona event listener para cada anchor no menu lateral
   navOption.forEach((option) => option.addEventListener('click', (event)=> handleNavOption(event)))
 
@@ -134,19 +173,23 @@ window.onload = ()=> {
 
   filterInvoiceBy.addEventListener('change', (event)=> 
   handleFiltersInvoice(event))
+
+  // Renderiza inicialmente as notas fiscais em elementos li
+  invoices?.forEach((invoice) => {
+    const invoiceItem = createInvoiceItem(invoice);
+    invoiceDataContainer.appendChild(invoiceItem);
+  });
   }
 
   /* 
   A fazer:
     Indicadores:
-      - Adicionar event listener para input de filtro;
       - Criar função para lidar com filtros;
       - Criar função para modificar valores dos cards de acordo com o filtro
       - Estilizar Charts;
       - Estilização Fina de Cards;
 
     Notas Fiscais:
-      - Criar handler e eventListener para filtro de notas fiscais;
       - Criar função para lidar com filtros;
       - Criar função para deixar dinamico a renderização de notas.
       - Criar notas fiscais falsas para renderizar;
