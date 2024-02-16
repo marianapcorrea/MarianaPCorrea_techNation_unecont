@@ -1,8 +1,7 @@
 import { INVOICES_FILTERS } from "./data/auxiliarData"
+import { invoiceDataContainer } from "./main"
 
-// Limpa os elementos li de notas fiscais
-export const clearCards = ()=>document.querySelectorAll('.invoice-item-data').forEach((card) => card.remove())
-
+/* ----------------------------- GLOBAL ----------------------------- */
 //Cria um elemento option para ser adicionado ao filtro
 export const createOptionElemente = (value, className) => {
   const optionEL =document.createElement('option')
@@ -12,12 +11,20 @@ export const createOptionElemente = (value, className) => {
 return optionEL
 }
 
+export const filterByMonth = (data,filter, month) => {
+  return data.filter((el) => el[filter].split('/')[1]?.includes(month))
+}
+
+/* ----------------------------- INVOICE SECTION ----------------------------- */
+// Limpa os elementos li de notas fiscais
+export const clearCards = ()=>document.querySelectorAll('.invoice-item-data').forEach((card) => card.remove())
+
 export const getInvoiceFilterByValue =(choosedFilter)=>{
   let filterName = ""
-  const filtersOptions = ['Todas', 'emissionDate', 'dueDate', 'paymentDate', 'invoiceStatus']
+  const filtersOptions = ['Tudo', 'emissionDate', 'dueDate', 'paymentDate', 'invoiceStatus']
   
   INVOICES_FILTERS.forEach((filter, i) => {
-    choosedFilter === filter ? filterName = filtersOptions[i] : 'Todas'
+    choosedFilter === filter ? filterName = filtersOptions[i] : 'Tudo'
   })
 return filterName
     
@@ -69,10 +76,7 @@ export const createNoDataCard = () => {
   invoiceDataContainer.appendChild(pEl);
 }
 
-export const filterByMonth = (data,filter, month) => {
-  return data.filter((el) => el[filter].split('/')[1]?.includes(month))
-}
 
 
-
+/* ----------------------------- IDICATORS SECTION ----------------------------- */
 export const handleValuesSum = (invoices) => invoices.reduce((acc, {invoiceValue}) => acc + invoiceValue, 0)

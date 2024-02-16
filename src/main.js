@@ -9,7 +9,7 @@ const vigencyYear = document.querySelector('#vigency-year')
 const filterIndicatorBy = document.querySelector('#filter-indicators-by')
 const invoiceFilterInput = document.querySelector('#invoice-filter')
 const filterInvoiceBy = document.querySelector('#filter-invoice-by')
-const invoiceDataContainer =document.querySelector("#invoice-data")
+export const invoiceDataContainer =document.querySelector("#invoice-data")
 const cardFullValue = document.querySelector('#full-value div span')
 
 
@@ -93,7 +93,7 @@ const handleFiltersInvoice = ({target},data) => {
   options.forEach((option) => option.remove())
 
   switch (target.value) {
-    case "Todas":
+    case "Tudo":
     invoiceFilterInput.appendChild(createOptionElemente("--",'filter-option'))
     data?.forEach((invoice) => {
       invoiceDataContainer.appendChild(createInvoiceItem(invoice));
@@ -157,16 +157,19 @@ window.onload = async()=> {
   //Popula os filtros de acordo com as opções disponíveis
   handleInitialFiltersPopulation()
 
+  //Popula os valores iniciais dos cards 
+  handleInvoiceCardPopulation(invoices)
+  cardFullValue.innerHTML = handleValuesSum(invoices).toFixed(2)
+
+
   // Adiciona event listener para os filtros
   filterIndicatorBy.addEventListener('change', (event)=> handleFiltersIndicators(event))
 
   filterInvoiceBy.addEventListener('change', (event)=> 
   handleFiltersInvoice(event, invoices))
 
-  handleInvoiceCardPopulation(invoices)
-
   invoiceFilterInput.addEventListener('change', (event) => applyFilterInvoice(event, invoices))
-  cardFullValue.innerHTML =handleValuesSum(invoices).toFixed(2)
+
   }
 
   /* 
@@ -177,13 +180,11 @@ window.onload = async()=> {
       - Estilizar Charts;
       - Estilização Fina de Cards;
 
-    Notas Fiscais:
-      - Criar função para lidar com filtros;
-
     Geral:
       - Adicionar filtro para ano vigente
-      - Estilização de filtros
       - Criar documentação para o projeto, explicando a estrutura, funcionalidades e decisões tomadas;
+      - Estilização de filtros
+      - Estilização de section card para adicionar scroll apenas nela.
       - head: trocar icone e titulo;
       - Estilização mobile;
       - Adicionar icones;applyFilterInvoice
