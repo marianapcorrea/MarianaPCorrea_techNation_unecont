@@ -11,32 +11,17 @@ export const YEARS = ['2023', '2022', '2021'];
 export const INVOICE_STATUS = ['--','Emitida', 'Cobrança realizada', 'Pagamento em atraso', 'Pagamento realizado']
 
 
-export const INADIMPLENCE_EVOLUTION=  {
-  Janeiro:650, 
-  Fevereiro:599,
-  Março: 804,
-  Abril: 816,
-  Maio: 568,
-  Junho: 558,
-  Julho: 403,
-  Agosto: 812,
-  Setembro: 569,
-  Outubro: 550,
-  Novembro: 404,
-  Dezembro: 580
+export const NUMBER_MONTH_OBJ=  {
+  '01':'Janeiro', 
+  '02':'Fevereiro',
+  '03':'Março',
+  '04':'Abril',
+  '05':'Maio',
+  '06':'Junho',
+  '07':'Julho',
+  '08':'Agosto',
+  '09':'Setembro',
+  '10':'Outubro',
+  '11':'Novembro',
+  '12':'Dezembro'
 }
-
-export const INCOME_EVOLUTION = {
-  Janeiro:650, 
-  Fevereiro:165,
-  Março: 519,
-  Abril: 480,
-  Maio: 851,
-  Junho: 506,
-  Julho: 575,
-  Agosto: 490,
-  Setembro: 801,
-  Outubro: 556,
-  Novembro: 490,
-  Dezembro: 500
-} 

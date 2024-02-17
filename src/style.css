@@ -21,7 +21,8 @@ body {
   flex-direction: row;
   width: 100vw;
   height: 100%;
-  min-height: 100vh
+  min-height: 100vh;
+  overflow: hidden;
 }
 
 /* Header - Sidebar */
@@ -151,6 +152,8 @@ input.tab:checked + label{
   position: relative;
   top: -1.5rem;
   border-radius: 5px;
+  overflow-y: scroll;
+  height: 80vh;
 }
 
 .tab-content h2 {
@@ -161,10 +164,6 @@ input.tab:checked + label{
 }
 
 /* Data-Container - Indicators Section */
-/* #indicators-section {
-  display: none;
-} */
-
 #indicators-data {
   display: grid;
   grid-template-columns:  1fr 2fr;
@@ -190,11 +189,11 @@ input.tab:checked + label{
   display: flex;
   flex-direction: row;
   align-items: center;
-  font-size: 1rem;
+  font-size: 0.75rem;
 }
 
 .indicator-value .value span {
-  font-size: 4rem;
+  font-size: 2rem;
   font-weight: 700;
   color: black;
   padding-left: 0.5rem;
@@ -208,6 +207,11 @@ input.tab:checked + label{
 #chart {
   display: flex;
   flex-direction: column;
+  margin-top: 1.5rem;
+}
+
+#chart canvas {
+  margin: 1.5rem 0;
 }
 
 /* Data-Container - invoice Data */

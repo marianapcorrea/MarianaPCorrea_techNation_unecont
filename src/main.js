@@ -1,6 +1,6 @@
 import { INDICATORS_FILTERS, INVOICES_FILTERS, INVOICE_STATUS, MONTHS, TRIMESTERS, YEARS } from "./data/auxiliarData";
 import { getData } from "./data/fetchJson";
-import { clearCards,createOptionElemente, getInvoiceFilterByValue, createInvoiceItem, createNoDataCard, filterByMonth, handleValuesSum } from "./utils";
+import { clearInvoiceCards,createOptionElemente, getInvoiceFilterByValue, createInvoiceItem, createNoDataCard, filterByMonth, handleValuesSum, filterByEmitedNoCharge, filterByPastDue, filterByFutureDue, filterByPayed } from "./utils";
 
 const navOption = document.querySelectorAll('.navOption')
 const tabs = document.querySelectorAll('.tab')
@@ -11,6 +11,10 @@ const invoiceFilterInput = document.querySelector('#invoice-filter')
 const filterInvoiceBy = document.querySelector('#filter-invoice-by')
 export const invoiceDataContainer =document.querySelector("#invoice-data")
 const cardFullValue = document.querySelector('#full-value div span')
+const cardValueNoCharge = document.querySelector('#value-no-charge div span')
+const cardValueOverdue = document.querySelector('#value-overdue div span')
+const cardValueFutureDue = document.querySelector('#value-future-due div span')
+const cardFullPayed = document.querySelector('#full-payed div span')
 
 
 // Função para adicionar a classe navOptionActive ao clicar em uma opção do menu lateral
@@ -73,10 +77,13 @@ const handleFiltersIndicators = ({target}) => {
     case "Tudo": 
     filterInput.appendChild(createOptionElemente("--",'filter-option'))
     break;
+
     case "Mês": 
     MONTHS.forEach((month) => {
       filterInput.appendChild(createOptionElemente(month, 'filter-option'))
     })
+    break;
+
     case "Trimestre": 
     TRIMESTERS.forEach((trimester) => {
       filterInput.appendChild(createOptionElemente(trimester,'filter-option'))
@@ -118,9 +125,10 @@ const handleFiltersInvoice = ({target},data) => {
 
 // Função para aplicar o filtro de acordo com o valor selecionado
 const applyFilterInvoice = ({target},data) => {
+  clearInvoiceCards()
   let filteredData = []
   const filter = getInvoiceFilterByValue(filterInvoiceBy.value)
-if (filter ==='invoiceStatus') {
+  if (filter ==='invoiceStatus') {
   filteredData = data?.filter((invoice) => invoice[filter] === target.value)
 }
   MONTHS.forEach((month, i) =>{
@@ -135,10 +143,77 @@ if (filter ==='invoiceStatus') {
     return filteredData.length>0? handleInvoiceCardPopulation(filteredData):  createNoDataCard()
 }
 
+const applyFilterIndicator = ({target}, data) => {
+  let filteredData = [];
+  let montInNumber = []
+  MONTHS.forEach((month, i) =>{
+  switch (target.value) {
+
+    case month==="--":
+      filteredData = data
+      break
+
+    case "1º Trimestre":
+      filteredData = []
+      montInNumber = ['1', '2', '3']
+      montInNumber.forEach((item) => {
+        const partial =  filterByMonth(data, 'emissionDate', item)      
+        filteredData.push(...partial)
+      })
+      break
+
+    case "2º Trimestre":
+      filteredData = []
+      montInNumber = ['4', '5', '6']
+      montInNumber.forEach((item) => {
+        const partial =  filterByMonth(data, 'emissionDate', item)      
+        filteredData.push(...partial)
+      })
+      break
+
+    case "3º Trimestre":
+      filteredData = []
+      montInNumber = ['7', '8', '9']
+      montInNumber.forEach((item) => {
+        const partial =  filterByMonth(data, 'emissionDate', item)      
+        filteredData.push(...partial)
+      })
+      break
+
+    case "4º Trimestre":
+      filteredData = []
+      montInNumber = ['10', '11', '12']
+      montInNumber.forEach((item) => {
+        const partial =  filterByMonth(data, 'emissionDate', item)      
+        filteredData.push(...partial)
+      })
+      break
+
+    case month:
+      filteredData = filterByMonth(data, 'emissionDate', i)
+      break
+  }
+  })
+
+  return handleIndicatosCardPopulation(filteredData)
+}
+
+const handleIndicatosCardPopulation = (data) => {
+  cardFullValue.innerHTML = handleValuesSum(data).toFixed(2)
+
+  cardValueNoCharge.innerHTML = handleValuesSum(filterByEmitedNoCharge(data)).toFixed(2)
+  
+  cardValueOverdue.innerHTML = handleValuesSum(filterByPastDue(data)).toFixed(2)
+
+  cardValueFutureDue.innerHTML = handleValuesSum(filterByFutureDue(data)).toFixed(2)
+
+  cardFullPayed.innerHTML = handleValuesSum(filterByPayed(data)).toFixed(2)
+}
+
 // Renderiza  as notas fiscais em elementos li
-const handleInvoiceCardPopulation= (invoices)=>{ 
-  clearCards()
-invoices?.forEach((invoice) => {
+const handleInvoiceCardPopulation= (data)=>{ 
+  clearInvoiceCards()
+  data?.forEach((invoice) => {
   const invoiceItem = createInvoiceItem(invoice);
   invoiceDataContainer.appendChild(invoiceItem);
 });
@@ -158,12 +233,15 @@ window.onload = async()=> {
   handleInitialFiltersPopulation()
 
   //Popula os valores iniciais dos cards 
+  
   handleInvoiceCardPopulation(invoices)
-  cardFullValue.innerHTML = handleValuesSum(invoices).toFixed(2)
+  handleIndicatosCardPopulation(invoices)
 
 
   // Adiciona event listener para os filtros
   filterIndicatorBy.addEventListener('change', (event)=> handleFiltersIndicators(event))
+
+  filterInput.addEventListener('change', (event) => applyFilterIndicator(event, invoices))
 
   filterInvoiceBy.addEventListener('change', (event)=> 
   handleFiltersInvoice(event, invoices))
@@ -177,7 +255,7 @@ window.onload = async()=> {
     Indicadores:
       - Criar função para lidar com filtros;
       - Criar função para modificar valores dos cards de acordo com o filtro
-      - Estilizar Charts;
+      - Estilizar Charts;INDICATORS_FILTERS
       - Estilização Fina de Cards;
 
     Geral:

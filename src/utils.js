@@ -17,7 +17,7 @@ export const filterByMonth = (data,filter, month) => {
 
 /* ----------------------------- INVOICE SECTION ----------------------------- */
 // Limpa os elementos li de notas fiscais
-export const clearCards = ()=>document.querySelectorAll('.invoice-item-data').forEach((card) => card.remove())
+export const clearInvoiceCards = ()=>document.querySelectorAll('.invoice-item-data').forEach((card) => card.remove())
 
 export const getInvoiceFilterByValue =(choosedFilter)=>{
   let filterName = ""
@@ -26,9 +26,8 @@ export const getInvoiceFilterByValue =(choosedFilter)=>{
   INVOICES_FILTERS.forEach((filter, i) => {
     choosedFilter === filter ? filterName = filtersOptions[i] : 'Tudo'
   })
-return filterName
-    
-  }
+  return filterName
+}
 
   // Função de geração dinâmica de elementos li para dados de notas fiscais
 export const createInvoiceItem = ({payerName, invoiceId, emissionDate, dueDate, paymentDate, invoiceValue, bankDocument, invoiceStatus}) => {
@@ -80,3 +79,16 @@ export const createNoDataCard = () => {
 
 /* ----------------------------- IDICATORS SECTION ----------------------------- */
 export const handleValuesSum = (invoices) => invoices.reduce((acc, {invoiceValue}) => acc + invoiceValue, 0)
+
+
+
+export const filterByPaymentDate = (data) => data.filter((el) => el.paymentDate !== '')
+
+//
+export const filterByEmitedNoCharge = (data) => data.filter((el) => el.invoiceStatus === 'Emitida')
+
+export const filterByFutureDue = (data) => data.filter((el) => el.invoiceStatus === 'Cobrança realizada')
+
+export const filterByPastDue = (data) => data.filter((el) => el.invoiceStatus === 'Pagamento em atraso')
+
+export const filterByPayed = (data) => data.filter((el) => el.invoiceStatus === 'Pagamento realizado')
