@@ -250,22 +250,3 @@ window.onload = async()=> {
 
   }
 
-  /* 
-  A fazer:
-    Indicadores:
-      - Criar função para lidar com filtros;
-      - Criar função para modificar valores dos cards de acordo com o filtro
-      - Estilizar Charts;INDICATORS_FILTERS
-      - Estilização Fina de Cards;
-
-    Geral:
-      - Adicionar filtro para ano vigente
-      - Criar documentação para o projeto, explicando a estrutura, funcionalidades e decisões tomadas;
-      - Estilização de filtros
-      - Estilização de section card para adicionar scroll apenas nela.
-      - head: trocar icone e titulo;
-      - Estilização mobile;
-      - Adicionar icones;applyFilterInvoice
-      - Adicionar transições;
-      
-  */
