@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/src/public/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/src/style.css" />
+    <title>TESTE - MARIANA CORRÊA</title>
+  </head>
+  <body>
+    <header id='main-sidebar'>
+      <p> Accusoft</p>
+      <nav>
+        <a class='navOption navOptionActive' href="/dashboard" >Dashboard</a>
+        <a class='navOption' href="/" >Customers</a>
+      </header>
+    </nav>
+    <main id="app">
+      <header id="header-container">
+        <h1>Dashboard</h1>
+        <input type="text" id="search-bar" placeholder="Pesquisar">
+        <span id="user">
+          <img src="" alt="User Avatar"/>
+          <span>
+            <p id="user-name">John Doe</p>
+            <p id="user-permission">Super Admin</p>
+          </span>
+        </span>
+      </header>
+
+      <section id="main-container">
+        <!-- Form com opções de abas -->
+        <form id="tabs-container">
+          <input  class="tab" type="radio" name="dash-section" id="indicators" value="indicators" checked>
+          <label for="indicators">Indicadores</label>
+          
+          <input  class="tab" type="radio" name="dash-section" id="invoice" value="invoice">
+          <label for="invoice">Notas Emitidas</label>
+        </form>
+
+        <!-- Área de exibição dos dados das abas-->
+        <section id="data-container">
+          <!-- Área de Indicadores -->
+          <form>
+            <label>Ano de Vigência:</label>
+            <select id="vigency-year"></select>
+          </form>
+          <section class="tab-content" id="indicators-section">
+            <h2>Indicadores</h2>
+            <section id="values">
+              <!-- Filtros dos Indicadores -->
+              <form>
+            
+                <label>Filtrar por:</label>
+                <!-- Options geradas dinamicamente -->
+                <select id="filter-indicators-by"></select>
+              <select id="indicators-filter"></select>
+              </form>
+
+              <!-- Subsessão de cards -->
+              <section id="indicators-data">
+                <div class="indicator-value" id="full-value">
+                  <div  class="value">R$<span>0</span></div>
+                  <h3>Valor Total - Notas Emitidas</h3>
+                </div>
+                <section>
+                    <div class="indicator-value" id="value-no-charge">
+                      <div  class="value">R$<span>0</span></div>
+                      <h3>Total de notas emitidas - Sem cobrança</h3>
+                    </div>
+                    <div class="indicator-value" id="value-overdue">
+                      <div  class="value">R$<span>0</span></div>
+                      <h3>Total de notas vencidas - Inadimplência</h3>
+                      </div>
+                    </div>
+                    <div class="indicator-value" id="value-future-due">
+                      <div  class="value">R$<span>0</span></div>
+                      <h3>Total de notas a vencer</h3>
+                    </div>
+                    <div class="indicator-value" id="full-payed">
+                      <div  class="value">R$<span>0</span></div>
+                      <h3>Valor Total - Notas Pagas</h3>
+                    </div>
+                  </section>
+                </section>
+              </section>
+      
+              <!-- Subsessão de gráficos -->
+            <section id="chart">
+              <h2>Evolução da inadimplência</h2>
+              <canvas id="chart_nonPayment"></canvas>
+
+              <h2>Evolução da Receita Recebida</h2>
+              <canvas id="chart_incomeEvolution"></canvas>
+            </section>
+          </section>
+        
+        <!-- Área de Notas Fiscais -->
+          <section  class="tab-content" id="invoice-section">
+            <h2>Notas Fiscais Emitidas</h2>
+
+              <!-- Filtros das Notas -->
+            <form>
+              
+              <label>Filtrar por:</label>
+              <select id="filter-invoice-by"></select>
+
+              <!-- Options geradas dinamicamente -->
+              <select id="invoice-filter"></select>
+            </form>
+            <ul id="invoice-data">
+            </ul>
+            
+        </section>
+      </section>
+    </main>
+    
+    <script type="module" src="/src/main.js"></script>
+    <script type="module" src="/src/data/charts.js"></script>
+  </body>
+</html>

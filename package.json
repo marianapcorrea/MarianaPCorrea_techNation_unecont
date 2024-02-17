@@ -1,0 +1,24 @@
+{
+  "name": "teste_technation-unecont",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "description": "Projeto de teste proposto pela  Technation em HTML, CSS e JavaScript Vannilla",
+  "author": {
+    "name": "Mariana P Corrêa",
+    "email": "mpcs270391@gmail.com",
+    "url": "https://github.com/marianapcorrea"
+},
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^5.1.0"
+  },
+  "dependencies": {
+    "chart.js": "^4.4.1"
+  }
+}
+
